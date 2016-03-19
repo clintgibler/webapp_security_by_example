@@ -1,0 +1,23 @@
+<!doctype html>
+<title>Hello from Flask</title>
+URL param = username.
+
+</br>
+<button onclick="greetUser()">Greet User</button>
+</br>
+<button onclick="otherGreet()">Other Greet</button>
+
+<script>
+var username = "{{username}}";
+
+function greetUser() {
+  alert("Hello " + username);
+}
+
+var seconduser = "{{username|safe}}";
+function greetUser() {
+  alert("Hello " + seconduser);
+}
+</script>
+
+</html>
