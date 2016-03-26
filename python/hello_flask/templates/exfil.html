@@ -2,8 +2,17 @@
 <title>Hello from Flask</title>
 URL param = username.
 
-</br>
-<button onclick="greetUser()">Greet User</button>
-</br>
-<button onclick="otherGreet()">Other Greet</button>
+</br></br>
+Goal: Exfiltrate sensitive data to a server you control.
+</br></br>
+
+Hello {{ username | safe}}!
+
+<p>
+Your current bank account balance is: 
+<span id="bank_balance">1,000,000</span>
+</p>
+
+
+
 </html>
