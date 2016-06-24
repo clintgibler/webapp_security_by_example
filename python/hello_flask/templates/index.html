@@ -5,21 +5,109 @@ Here are some things to play with. View the source of hello_flask.py for details
 </br></br>
 <em>Note:</em> I'm purposefully not giving you a lot of detail for these, because you have all you need: the source code and a running instance of the web app ;)
 
-<h2>Round 1</h1>
+<h2>Round 1 - Cross-Site Scripting (XSS)</h1>
+
+<p>
+The following exercises are minimal XSS examples. That is, on
+each page, it is possible for you to provide input that will
+be executed as JavaScript. <b>Your goal for each page</b>
+is to provide input that will cause an alert box to pop up.
+</p>
+
+<p>
+For <a href="/hello_html">hello html</a> and
+<a href="/hello_js">hello js</a>, you can provide input that
+will cause one alert box to pop up. On
+<a href="/hello_html_attr">hello html attr</a>, it's
+possible to cause 2 popup alerts with the right input. 
+</p>
+
+<p>
+You can cause these popups to trigger without modifying the
+server code or by manually editing the DOM of the page. Simply
+providing the right input is enough.
+</p>
+
+<p>
+But how do you provide the input? Check out
+<code>hello_flask.py</code>, which defines the routes. I've
+added more descriptive comments there.
+</p>
+
+<p>Good luck!</p>
+
+<h3>XSS Exercises</h3>
 
 <ol>
   <li><a href="/hello_html">hello html</a></li>
   <li><a href="/hello_html_attr">hello html attr</a></li>
-  <li><a href="/hello_js">hello js</a></li>
+  <li><a href="/hello_js">hello js</a> - For this page,
+    the goal is to provide an input such that the alert
+    popup occurs as the page is loading without needing to
+    click on any button.</li>
 </ol>
 
+<h3>Troubleshooting Tips</h3>
+
+
+<h4>Not sure how to provide arguments to the page?</h4>
+See <code>hello_flask.py</code> for a description.
+
+
+<h4>Having trouble getting an alert box to pop up?</h4>
+I'd recommend reviewing the following files for the
+exercise you're working on:
+
+<ul>
+<li>The template generating the page in <code>templates/</code>.</li>
+<li>Right click on the page and select "View Page Source" to 
+    see what HTML your input is creating.</li>
+<li>On the page itself, right-click and select 
+    "Inspect element". Click on the "Console" tab. The
+     browser will tell you when your input is causing the
+     generated HTML or JavaScript to be malformed.</li>
+  <ul><li><i>Hint:</i> sometimes your JavaScript won't run
+      because of this.</li></ul>
+</ul>
+
+<h4>Doing the right thing but your attack still isn't 
+working?</h4>
+
+<p>Chrome is generally pretty smart about blocking reflected
+XSS attacks (which all of these are). Try using Firefox instead.</p>
+
+<p>TODO: provide links/decription to turning off Chrome's XSS
+auditor</p>
+
+<h3>Post-Exercise Stuff to Think About</h3>
+
+After you complete the exercises, think about where
+you were able to execute the JavaScript. Why did some insertion
+points work and some didn't? What does <code>safe</code> do?
+
 <hr>
+
+<h2>NOTE: Exercises after this point are probably not ready</h2>
+
+But one day they will be.
 
 <h2>Round 2</h2>
 After we discuss those, here are moar:
 
 <ol>
-  <li><a href="/exfil">exfil</a></li>
   <li><a href="/validate_email">validate email</a></li>
-<!--  <li><a href="/hello_dropdown">hello dropdown</a></li> -->
+  <li><a href="/hello_dropdown">hello dropdown</a></li>
+  <li><a href="/exfil">exfil</a></li>
+
+</ol>
+
+<hr>
+
+<h2>Round 3</h2>
+
+<ol>
+  <li><a href="{{ url_for('path_traversal') }}">path traversal</a></li>
+  <li><a href="{{ url_for('command_injection') }}">command injection</a></li>
+  <li><a href="{{ url_for('csrf') }}">csrf</a></li>
+  <li><a href="{{ url_for('sqli') }}">sqli</a></li>
 </ol>
