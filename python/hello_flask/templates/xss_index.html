@@ -1,0 +1,80 @@
+<h1>Cross-Site Scripting (XSS)</h1>
+
+<p>
+The following exercises are minimal XSS examples. That is, on
+each page, it is possible for you to provide input that will
+be executed as JavaScript. <b>Your goal for each page</b>
+is to provide input that will cause an alert box to pop up.
+</p>
+
+<p>
+For <a href="{{url_for('routes.hello_html')}}">hello html</a> and
+<a href="{{url_for('routes.hello_js')}}">hello js</a>, you can provide input that
+will cause one alert box to pop up. On
+<a href="{{url_for('routes.hello_html_attr')}}">hello html attr</a>, it's
+possible to cause 2 popup alerts with the right input. 
+</p>
+
+<p>
+You can cause these popups to trigger without modifying the
+server code or by manually editing the DOM of the page. Simply
+providing the right input is enough.
+</p>
+
+<p>
+But how do you provide the input? Check out
+<code>routes/xss.py</code>, which defines the routes. I've
+added more descriptive comments there.
+</p>
+
+<p>Good luck!</p>
+
+<h2>XSS Exercises</h2>
+
+<ol>
+  <li><a href="{{url_for('routes.hello_html')}}">hello html</a></li>
+  <li><a href="{{url_for('routes.hello_html_attr')}}">hello html attr</a></li>
+  <li><a href="{{url_for('routes.hello_js')}}">hello js</a> - For this page,
+    the goal is to provide an input such that the alert
+    popup occurs as the page is loading without needing to
+    click on any button.</li>
+</ol>
+
+<hr>
+
+<h2>Troubleshooting Tips</h2>
+
+<h4>Not sure how to provide arguments to the page?</h4>
+See <code>routes/xss.py</code> for a description.
+
+
+<h4>Having trouble getting an alert box to pop up?</h4>
+I'd recommend reviewing the following files for the
+exercise you're working on:
+
+<ul>
+<li>The template generating the page in <code>templates/</code>.</li>
+<li>Right click on the page and select "View Page Source" to 
+    see what HTML your input is creating.</li>
+<li>On the page itself, right-click and select 
+    "Inspect element". Click on the "Console" tab. The
+     browser will tell you when your input is causing the
+     generated HTML or JavaScript to be malformed.</li>
+  <ul><li><i>Hint:</i> sometimes your JavaScript won't run
+      because of this.</li></ul>
+</ul>
+
+<h4>Doing the right thing but your attack still isn't 
+working?</h4>
+
+<p>Chrome is generally pretty smart about blocking reflected
+XSS attacks (which all of these are). Try using Firefox instead.</p>
+
+<p>TODO: provide links/decription to turning off Chrome's XSS
+auditor</p>
+
+<h3>Post-Exercise Stuff to Think About</h3>
+
+After you complete the exercises, think about where
+you were able to execute the JavaScript. Why did some insertion
+points work and some didn't? What does <code>safe</code> do?
