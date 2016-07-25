@@ -1,0 +1,30 @@
+<!doctype html>
+<title>Hello from Flask</title>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<form action="{{url_for('hello_dropdown')}}" method="post">
+What's your favorite movie?
+<select name='movie'>
+<option value="matrix">The Matrix</option>
+<option value="hackers">Hackers</option>
+<option value="sneakers">Sneakers</option>
+</select>
+</br>
+<input type="submit" value="Ask me what I think">
+</form>
+
+</br>
+
+<a href="/xss/">Back</a>
+
+
+</html>

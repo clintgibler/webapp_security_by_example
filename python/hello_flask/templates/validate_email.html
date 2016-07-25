@@ -1,0 +1,32 @@
+<!doctype html>
+<title>Hello from Flask</title>
+
+<form>
+Email address: <input id="email" type="text" name="email">
+</form>
+
+</br>
+<button onclick="buttonAction()">Validate email</button>
+
+<!-- Hint: you are Neo in the Matrix -->
+
+<script>
+
+function buttonAction() {
+    if (checkIfValidEmail()) {
+        alert("Matches!");
+    } else {
+        alert("Not a valid email :(");
+    }
+}
+
+
+function checkIfValidEmail() {
+    var re = /[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+/
+    var email = document.getElementById("email").value;
+
+    return re.test(email);
+}
+</script>
+
+</html>

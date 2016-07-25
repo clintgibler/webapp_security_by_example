@@ -1,0 +1,29 @@
+<!doctype html>
+<title>Hello from Flask</title>
+
+<b>Goal</b>: Provide an input such that the alert popup
+occurs as the page is loading without needing to click on any button.
+
+</br>
+</br>
+<button onclick="greetUser()">Greet User</button>
+</br>
+<button onclick="otherGreet()">Other Greet</button>
+
+<script>
+var username = "{{username}}";
+
+function greetUser() {
+  alert("Hello " + username);
+}
+
+var seconduser = "{{username|safe}}";
+function otherGreet() {
+  alert("Hello " + seconduser);
+}
+</script>
+
+<a href="/xss/">Back</a>
+
+
+</html>

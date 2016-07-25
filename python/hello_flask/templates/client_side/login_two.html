@@ -1,0 +1,75 @@
+<!doctype html>
+<title>Login Two</title>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+<h1>Login Two</h1>
+
+<b>Goal</b>: login to this app, assume no knowledge of the server-side code (blackbox).
+
+</br>
+</br>
+<div id="username-message"></div>
+</br>
+</br>
+
+<form action="/client_side/login_two_verify" method="POST" id="submit-form">
+Username: <input id="username" type="text" name="username">
+Password: <input id="password" type="text" name="password">
+<input type="button" onclick="submitPassword()" value="Guess Password">
+</form>
+
+</br>
+
+<style>
+  div {
+    background-color: red;
+  }
+</style>
+
+<script
+   src="http://code.jquery.com/jquery-3.1.0.min.js"
+   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+     crossorigin="anonymous"></script>
+
+<script>
+function submitPassword() {
+  valid_usernames = getUsernames();
+  cur_username = document.getElementById("username").value;
+
+  if (cur_username in valid_usernames) {
+    document.getElementById("username-message").innerHTML = "";
+    document.getElementById("submit-form").submit();
+  } else {
+    document.getElementById("username-message").innerHTML = "Sorry, invalid username";
+  }
+}
+
+function getUsernames() {
+  usernames = null;
+
+  $.ajax({
+    async: false,
+    type: 'GET',
+    url: '/client_side/login_two/known_users',
+    success: function(data) {
+      usernames = data;
+    }
+  });
+  return usernames;
+}
+
+</script>
+
+<a href="/client_side">Back</a>
+
+</html>

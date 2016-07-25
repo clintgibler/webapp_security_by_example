@@ -1,0 +1,11 @@
+<html>
+<h1>Handy Dandy Directory List-O-Matic</h1>
+
+Here are the files in <b>{{path}}</b>
+<ol>
+{% for f in filelist %}
+  <li>{{f}}</li>
+{% endfor %}
+</ol>
+
+</html>

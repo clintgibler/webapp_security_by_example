@@ -1,0 +1,32 @@
+<!doctype html>
+<title>Login Three</title>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }} </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+
+<h1>Login Three</h1>
+
+<b>Goal</b>: login to this app, assume no knowledge of the server-side code (blackbox).
+
+</br>
+</br>
+
+<form action="/client_side/login_three_verify" method="POST">
+Username: <input id="username" type="text" name="username">
+Password: <input id="password" type="text" name="password">
+<input type="Submit" value="Guess Password">
+</form>
+
+</br>
+
+<a href="/client_side">Back</a>
+
+</html>
