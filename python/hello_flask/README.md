@@ -15,6 +15,8 @@ Install Flask
 pip3 install Flask 
 
 # 3. Run the server
+# Note that due to relative pathing this command should be run
+# from within this current hello_flask/ directory
 python3 hello_flask.py
 ```
 
