@@ -1,0 +1,35 @@
+<h2>Instructions</h2>
+<ul>
+<li><b>Goal:</b> cause this page to display the contents of a
+    sensitive outside of what it intends (i.e. you could leak the
+    contents of any file on the server). </li>
+<li>Feel free to review the controller source code in
+    <code>routes/owasp.py</code> or the source of this template file.</li>
+</ul>
+
+<hr>
+
+<h1>Path Traversal</h1>
+
+Here are files in <code>hello_flask/static/</code>:
+
+<ul>
+{% for file in files %}
+<li><a href={{url_for('routes.owasp_path_traversal')}}?current_file={{file}}>{{file}}</a></li>
+{% endfor %}
+</ul>
+
+</br>
+</br>
+
+{% if current_file != None %}
+Contents of {{current_file}}:
+</br>
+</br>
+
+<pre>
+~~~~~</br>
+{{ file_content }}
+~~~~~
+</pre>
+{% endif %}

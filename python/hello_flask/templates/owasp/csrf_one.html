@@ -1,0 +1,31 @@
+<h2>Instructions</h2>
+<ul>
+<li><b>Goal:</b> create an <code>html</code> file that when opened in another tab,
+  hits the transfer endpoint that this page does, and automatically subtracts $10
+  from your balance with no interaction from the user.
+  <ul>
+    <li>Specifically: on this page, it says your balance is $X. Then you open the <code>html</code>
+      file you created. Refresh this page, now it should say your balance is $X - 10.
+  </ul>
+    <li>You do not need to review the Python controller code to complete this exercise.</li>
+</ul>
+
+<a href={{url_for("owasp_index")}}>Back</a>
+
+<hr>
+
+<h1>CSRF One</h1>
+
+Your current balance is: ${{balance}}.
+
+</br>
+</br>
+</br>
+Update money:
+</br>
+</br>
+<form action="/owasp/csrf_one_transfer" method="GET">
+Amount to transfer: <input id="amount" type="text" name="amount">
+<input type="Submit" value="Transfer money">
+</form>
+

@@ -1,0 +1,23 @@
+<h2>Instructions</h2>
+<ul>
+<li><b>Goal:</b> cause the application to run shell commands that it didn't intend to. For example:</li>
+  <ul>
+    <li>Cause it to create a new file.</li>
+    <li>Cause it to send the contents of a file to another web server you're running.</li>
+  </ul>
+<li>Feel free to review the controller source code in
+    <code>routes/owasp.py</code> or the source of this template file.</li>
+</ul>
+
+<hr>
+
+<h1>Handy Dandy Directory List-O-Matic</h1>
+
+Here are the files in <b>{{directory}}</b>
+<ol>
+{% for f in files %}
+  <li>{{f}}</li>
+{% endfor %}
+</ol>
+
+

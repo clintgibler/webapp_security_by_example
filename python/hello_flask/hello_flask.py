@@ -29,6 +29,11 @@ def xss_index():
 def client_side_index():
     return render_template("client_side_index.html")
 
+@app.route("/owasp/")
+def owasp_index():
+    return render_template("owasp_index.html")
+
+
 ######################
 # Other common vulns #
 ######################
@@ -53,16 +58,6 @@ def command_injection():
     filelist = filelist.decode("utf-8").split("\n")
     return render_template("command_injection.html",
                            path=path, filelist=filelist)
-
-@app.route('/csrf/')
-def csrf():
-    # TODO
-    pass
-
-@app.route('/sqli/')
-def sqli():
-    # TODO
-    pass
 
 #################
 # Server config #

@@ -9,15 +9,17 @@ They are purposefully minimal examples so the underlying principle is clear, and
 Install Flask
 
 ```bash
-# 1. Install Python 3
+# 1. This was written with Python 3 but should work fine with Python 2.
 
-# 2. Install Flask
-pip3 install Flask 
+# 2. Install dependencies
+# Pass in --user to install dependencies just for this user rather
+#   than system-level
+$ pip install -r requirements.txt [--user]
 
 # 3. Run the server
 # Note that due to relative pathing this command should be run
 # from within this current hello_flask/ directory
-python3 hello_flask.py
+$ python3 hello_flask.py
 ```
 
 Then navigate in your browser to `http://localhost:5000`.
