@@ -88,6 +88,19 @@ def client_side_login_four_verify():
 
 ###
 
+@routes.route('/client_side/wait_your_turn_one/')
+def wait_your_turn_one():
+    # Have greyed out button that they can manually turn on
+    resp = make_response(render_template("client_side/wait_your_turn_one.html"))
+    return resp
+
+@routes.route('/client_side/wait_your_turn_two/')
+def wait_your_turn_two():
+    # Have timer in JS they can muck with
+    resp = make_response(render_template("client_side/wait_your_turn_two.html"))
+    return resp
+
+
 # TODO: below
 
 @routes.route('/validate_email/')

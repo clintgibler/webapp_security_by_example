@@ -1,5 +1,9 @@
 <h1>Cross-Site Scripting (XSS)</h1>
 
+<a href="/">Back to the main page</a>
+
+<h2>Goals for These Exercises</h2>
+
 <p>
 The following exercises are minimal XSS examples. That is, on
 each page, it is possible for you to provide input that will
@@ -8,75 +12,77 @@ is to provide input that will cause an alert box to pop up.
 </p>
 
 <p>
-For <a href="{{url_for('routes.hello_html')}}">hello html</a> and
-<a href="{{url_for('routes.hello_js')}}">hello js</a>, you can provide input that
-will cause one alert box to pop up. On
-<a href="{{url_for('routes.hello_html_attr')}}">hello html attr</a>, it's
-possible to cause 2 popup alerts with the right input. 
-</p>
-
-<p>
 You can cause these popups to trigger without modifying the
 server code or by manually editing the DOM of the page. Simply
 providing the right input is enough.
 </p>
 
+<h2>These exercise pages expect input, how do I provide it?</h2>
+
 <p>
-But how do you provide the input? Check out
-<code>routes/xss.py</code>, which defines the routes. I've
+Check out <code>routes/xss.py</code>, which defines the routes. I've
 added more descriptive comments there.
 </p>
 
-<p>Good luck!</p>
+<h2>Having trouble getting an alert box to pop up?</h2>
 
-<h2>XSS Exercises</h2>
+Review the following files for the exercise you're working on:
+
+<ul>
+    <li>The template generating the page in <code>templates/</code>.</li>
+    <li>Right click on the page and select "View Page Source" to 
+        see what HTML your input is creating.</li>
+    <li>On the page itself, right-click and select 
+        "Inspect element". Click on the "Console" tab. The
+        browser will tell you when your input is causing the
+        generated HTML or JavaScript to be malformed.</li>
+    <ul><li><i>Hint:</i> sometimes your JavaScript won't run
+        because of this.</li></ul>
+</ul>
+
+<h2>I'm providing the right input but the attack isn't working :(</h2>
+
+<p>First, see the above section.</p>
+
+<p>Also, Chrome is generally pretty smart about blocking reflected
+    XSS attacks (which all of these are). Try using Firefox instead.</p>
+
+<p>TODO: provide links/decription to turning off Chrome's XSS
+    auditor</p>
+
+
+<h2><u>Without further ado, here are the XSS exercises</u></h2>
 
 <ol>
-  <li><a href="{{url_for('routes.hello_html')}}">hello html</a></li>
-  <li><a href="{{url_for('routes.hello_html_attr')}}">hello html attr</a></li>
+  <li><a href="{{url_for('routes.hello_html')}}">hello html</a> - the right input will 1 popup</li>
+  <ol><li>After you get a popup, look at the template in
+      <code>/templates/hello_html.html</code> The same user input is displayed
+       twice, what's different between them? Why is one not displayed?
+       If there's extra or missing calls, Google to figure out what they mean.</li></ol>
+  <li><a href="{{url_for('routes.hello_html_attr')}}">hello html attr</a> - the right input will cause 2 popups</li>
   <li><a href="{{url_for('routes.hello_js')}}">hello js</a> - For this page,
     the goal is to provide an input such that the alert
     popup occurs as the page is loading without needing to
     click on any button.</li>
 </ol>
 
+<p>Good luck!</p>
+
 <hr>
 
-<a href="/">Back</a>
+<h2>Post-Exercise Stuff to Think About</h3>
+
+After you complete the exercises, think about where
+you were able to execute the JavaScript. Why did some insertion
+points work and some didn't? What does <code>safe</code> do?
 
 <h2>Troubleshooting Tips</h2>
 
 <h4>Not sure how to provide arguments to the page?</h4>
 See <code>routes/xss.py</code> for a description.
 
+<h2>Primary Takeaways from these Exercises</h2>
 
-<h4>Having trouble getting an alert box to pop up?</h4>
-I'd recommend reviewing the following files for the
-exercise you're working on:
-
-<ul>
-<li>The template generating the page in <code>templates/</code>.</li>
-<li>Right click on the page and select "View Page Source" to 
-    see what HTML your input is creating.</li>
-<li>On the page itself, right-click and select 
-    "Inspect element". Click on the "Console" tab. The
-     browser will tell you when your input is causing the
-     generated HTML or JavaScript to be malformed.</li>
-  <ul><li><i>Hint:</i> sometimes your JavaScript won't run
-      because of this.</li></ul>
-</ul>
-
-<h4>Doing the right thing but your attack still isn't 
-working?</h4>
-
-<p>Chrome is generally pretty smart about blocking reflected
-XSS attacks (which all of these are). Try using Firefox instead.</p>
-
-<p>TODO: provide links/decription to turning off Chrome's XSS
-auditor</p>
-
-<h3>Post-Exercise Stuff to Think About</h3>
-
-After you complete the exercises, think about where
-you were able to execute the JavaScript. Why did some insertion
-points work and some didn't? What does <code>safe</code> do?
+The primary takeaway of these exercises is that <i>depending on the context
+where user input is being inserted</i>, you may have to <i>adjust the payload
+to make sure where it's inserted is valid HTML or JavaScript</i>.
