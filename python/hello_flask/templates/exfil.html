@@ -1,10 +1,22 @@
 <!doctype html>
 <title>Hello from Flask</title>
-URL param = username.
 
-</br></br>
-Goal: Exfiltrate sensitive data to a server you control.
-</br></br>
+<h1>The Impact of XSS</h1>
+
+<img src="/static/memes/jt_on_xss.jpg"/>
+
+<p>So far, we've been demonstrating that a site is vulnerable to XSS by showing
+an <code>alert()</code> box. However, in a real attack we want to do something
+more impactful, because after all, accessing sensitive information in your
+victim's browser in itself isn't that useful. <i>You</i>, the attacker, need
+access to it.</p>
+
+<p><b>Goal</b>: Provide malicious JavaScript as input to this page that exfiltrates sensitive data to a <i>separate</i> server you control (it can just be a simple Flask app you're also running on your local computer).</p>
+
+<p>The principle is that you could be extracting the victim's account balance, session cookie, etc. to a server you control that's accessible over the Internet.</p>
+<hr>
+
+<h2>Super Secure Bank</h2>
 
 Hello {{ username | safe}}!
 
@@ -13,6 +25,6 @@ Your current bank account balance is:
 <span id="bank_balance">1,000,000</span>
 </p>
 
-
+<a href="/xss/">Back</a>
 
 </html>
