@@ -2,5 +2,6 @@
 
 This repo aims to demonstrate specific web security principles via minimal examples.
 
-Currently there are only Python examples that use Python's Flask web framework.
-See `python/hello_flask/README.md` for details.
+See `hello_flask/` for a series of
+[OWASP Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) 
+type examples using Python's [Flask](http://flask.pocoo.org/) web framework.
